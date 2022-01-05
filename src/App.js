@@ -20,11 +20,12 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
-    if (this.state.newTask > 1) {
+    if (this.state.newTask > 0) {
       const taskCopy = [...this.state.tasks];
       taskCopy.push({ id: this.state.tasks.length + 1, name: this.state.newTask, done: false });
-      this.setState({ tasks: taskCopy, newTask: "" });
+      this.setState({ tasks: taskCopy });
     }
+    this.setState({ newTask: "" })
     e.preventDefault();
   }
 
