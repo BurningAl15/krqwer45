@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
-    if (this.state.newTask > 0) {
+    if (this.state.newTask.trim().length > 0) {
       const taskCopy = [...this.state.tasks];
       taskCopy.push({ id: this.state.tasks.length + 1, name: this.state.newTask, done: false });
       this.setState({ tasks: taskCopy });
@@ -44,7 +44,7 @@ class App extends Component {
             {this.state.tasks.map((task, index) => <li key={task.id} className={task.done ? 'done' : ''} onClick={() => { this.handleClick(index) }}>{task.name}</li>)}
           </ul>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" id="new-task" className={this.state.newTask.length > 1 ? '' : 'error'} placeholder="Ingresa una tarea y oprime Enter" value={this.state.newTask} onChange={this.handleChange} />
+            <input type="text" id="new-task" className={this.state.newTask.length > 0 ? '' : 'error'} placeholder="Ingresa una tarea y oprime Enter" value={this.state.newTask} onChange={this.handleChange} />
           </form>
         </div>
       </div>
